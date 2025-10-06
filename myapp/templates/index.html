@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+   
+    <!-- <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h2 {
+            color: #333;
+        }
+    </style> -->
+  </head>
+  <body>
+    <form method="post" action="{% url 'index' %}">
+      {% csrf_token %}
+        <label for="num1">Enter first number</label> <br>
+      <input type="text" name="num1" placeholder="Number 1" /> <br>
+        <label for="num2">Enter second number</label> <br>
+      <input type="text" name="num2" placeholder="Number 2" /> <br>
+      <button type="submit">Add</button>
+    </form>
+
+    <h2>Sum: {{ result }}</h2>
+  </body>
+</html>
