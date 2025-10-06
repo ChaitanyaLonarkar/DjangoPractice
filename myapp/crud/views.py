@@ -10,9 +10,14 @@ def create_user(request):
         age= request.POST.get('age')
         # Here, you would typically save the user to the database
         # For simplicity, we'll just render a success message
+
         # Create a new User object
         user = User(name=name, email=email, mobile=mobile, age=age)
         user.save()
 
         return render(request, 'create_user.html', {'message': 'User created successfully!'})
     return render(request, 'create_user.html')
+
+def list_users(request):
+    users = User.objects.all()
+    return render(request, 'users_list.html', {'users': users})
