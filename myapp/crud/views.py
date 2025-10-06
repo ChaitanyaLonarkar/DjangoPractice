@@ -21,3 +21,20 @@ def create_user(request):
 def list_users(request):
     users = User.objects.all()
     return render(request, 'users_list.html', {'users': users})
+
+def edit_user(request, user_index):
+    user = User.objects.get(index=user_index)
+    if request.method == 'POST':
+        user.name = request.POST.get('name')
+        user.email = request.POST.get('email')
+        user.mobile = request.POST.get('mobile')
+        user.age = request.POST.get('age')
+        user.save()
+        return render(request, 'edit_user.html', {'user': user, 'message': 'User updated successfully!'})
+    return render(request, 'edit_user.html', {'user': user})
+
+
+def delete_user(request, user_email):
+    user = User.objects.get(email=user_email)
+    user.delete()
+    return redirect('list_users')
