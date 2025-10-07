@@ -45,3 +45,7 @@ def delete_user(request, id):
         print('useer deleted')
         return redirect('list_users')
     return render(request, 'confirm.html', {'user': user})
+
+def view_user(request, id):
+    user = User.objects.get(pk=id)
+    return render(request, 'view_user.html', {'user': user})
