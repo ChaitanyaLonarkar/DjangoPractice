@@ -38,25 +38,25 @@
 </head>
 <body>
     <div class="container">
-        <h2>Create New User</h2>
-        <form method="POST" action="{% url 'list_users' %}">
+        <h2>Update User</h2>
+        <form method="post" >
             {% csrf_token %}
             <div class="form-group
 ">
                 <label for="name">User Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter item name" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter item name" value={{ user.name }} required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required></input>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required value={{ user.email }}></input>
             </div>
              <div class="form-group">
                 <label for="age">Age</label>
-                <input type="number" class="form-control" id="age" name="age" placeholder="Enter age" required></input>
+                <input type="number" class="form-control" id="age" name="age" placeholder="Enter age" required value={{ user.age }}></input>
             </div>
              <div class="form-group">
                 <label for="mobile">Mobile</label>
-                <input class="form-control" id="mobile" name="mobile" placeholder="Enter mobile" required></input>
+                <input class="form-control" id="mobile" name="mobile" placeholder="Enter mobile" required value={{ user.mobile }}></input>
             </div>
             
             <button type="submit" class="btn btn-primary">Update User</button>

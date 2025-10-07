@@ -71,8 +71,10 @@
                     <td>{{ user.mobile }}</td>
                     <td>
                        
-                        <a href="{% url 'edit_user' user_index=user.id %}" class="btn btn-edit btn-sm">Edit</a> 
-                        <a href="{% url 'delete_user' user.email %}" class="btn btn-delete btn-sm">Delete</a>  
+                        <a href="{% url 'edit_user' user.id %}" class="btn btn-edit btn-sm">Edit</a> 
+                        
+                      <a href="{% url 'delete_user' user.id %}" class="btn btn-delete btn-sm">Delete</a>
+
                     </td>
                 </tr>
                 {% endfor %}
