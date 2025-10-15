@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.contrib.auth import logout
 # Create your views here.
 def Register(request):
     # print(form,'form')
@@ -25,8 +26,8 @@ def Register(request):
 
 def Login(request):
     if request.method == 'POST':
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         user= authenticate(username=username, password=password)
         login(request, user)
         messages.success(request, f'Welcome {username}!')
@@ -37,4 +38,7 @@ def Home(request):
     return render(request,'home.html')
 
 def Logout(request):
-    return render(request,'logout.html')
+   
+    logout(request)
+    return redirect('login')
+
