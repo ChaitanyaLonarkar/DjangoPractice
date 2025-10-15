@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def Register(request):
     # print(form,'form')
@@ -34,9 +35,11 @@ def Login(request):
         return redirect('home')
     return render(request,'login.html')
 
+@login_required
 def Home(request):
     return render(request,'home.html')
 
+@login_required
 def Logout(request):
    
     logout(request)
