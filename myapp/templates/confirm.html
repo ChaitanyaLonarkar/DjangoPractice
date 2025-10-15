@@ -39,10 +39,11 @@
     <div class="container">
 
         <form method="post">
-            
+
             {% csrf_token %}
+            <h2>Delete User</h2>
             <p>Are you sure you want to delete user "{{ user.name }}"?</p>
-            <button class="btn btn-danger  ">
+            <button class="btn btn-danger">
                 <a href="{% url 'delete_user' user.id %}">Delete</a>
             </button>
         </form>
