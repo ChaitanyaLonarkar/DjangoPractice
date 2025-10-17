@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User,auth
+from django.contrib.auth.models import User,auth 
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
+from .models import Portfolio
 
 # Create your views here.
 
@@ -56,6 +57,14 @@ def logout(request):
 
 
 def create_profile(request):
+    user = request.user
+ 
+    if user is None:
+        return redirect('signin')
+    
+    if Portfolio.objects.filter(user=user).exists():
+        return redirect('profile')
+
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -79,6 +88,7 @@ def create_profile(request):
         project_link= request.POST.get('project_link')
      
         portfolio = Portfolio(
+            user=user,
             name=name,
             email=email,
             phone=phone,
@@ -106,9 +116,13 @@ def create_profile(request):
     return render(request, 'profile_form.html')
 
 # @login_required
-# def preview(request):
+def profile(request):
+    portfolio = Portfolio.objects.all()
+    print(portfolio,'===================')
     
-#     portfolio = Portfolio.objects.all()
-#     print(portfolio,'portfolio')
+    
 
-#     return render(request, 'profile.html', {'portfolio': portfolio})
+    # print(name,'+++++++++++++++')
+
+
+    return render(request, 'profile.html', {'user': portfolio})
