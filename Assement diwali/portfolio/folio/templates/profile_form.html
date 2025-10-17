@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+      margin-top: 30px;
+    }
+
+    form {
+      max-width: 800px;
+      background: white;
+      padding: 40px;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 4px rgba(59,130,246,0.3);
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      background: #2563eb;
+      color: white;
+      padding: 12px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      margin-top: 40px;
+      font-size: 1.3rem;
+      color: #1e3a8a;
+      border-left: 4px solid #3b82f6;
+      padding-left: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Build Your Portfolio Resume</h1>
+
+  <form method="post" >
+    {% csrf_token %}
+
+    <div class="section-title">👤 Personal Information</div>
+    <label>Full Name</label>
+    <input type="text" name="name" placeholder="e.g. Chaitanya Lonarkar" required>
+
+    <label>Email</label>
+    <input type="email" name="email" placeholder="e.g. you@example.com" required>
+
+    <label>Phone</label>
+    <input type="text" name="phone" placeholder="e.g. +91 9876543210" >
+   
+    <label>Profile Picture</label>
+    <input type="file" name="profile" id="">
+
+    <lable>Location</label>
+    <input type="text" name="location" placeholder="e.g. City, Country">
+
+    <label>Resume Link</label>
+    <input type="text" name="resume" placeholder="e.g. https://yourwebsite.com">
+
+    <label>LinkedIn Profile</label>
+    <input type="text" name="linkedin" placeholder="e.g. https://linkedin.com/in/yourname">
+
+    <label>GitHub Profile</label>
+    <input type="text" name="github" placeholder="e.g. https://github.com/yourname">
+
+    <label>About You / Summary</label>
+    <textarea name="bio" rows="4" placeholder="Write a short professional summary..."></textarea>
+
+    <div class="section-title">🎓 Education</div>
+    <label>Degree</label>
+    <input type="text" name="degree" placeholder="e.g. B.Tech in Computer Science">
+
+    <label>College / University</label>
+    <input type="text" name="college" placeholder="e.g. Government Engineering College">
+
+    <label>Graduation Year</label>
+    <input type="text" name="grad_year" placeholder="e.g. 2025">
+
+    <div class="section-title">💼 Experience</div>
+    <label>Company / Organization</label>
+    <input type="text" name="company" placeholder="e.g. Google Developer Student Club">
+
+    <label>Role / Position</label>
+    <input type="text" name="role" placeholder="e.g. Web Developer Coordinator">
+
+    <label>Description</label>
+    <textarea name="experience_desc" rows="3" placeholder="Briefly describe your responsibilities and achievements..."></textarea>
+
+    <div class="section-title">🚀 Projects</div>
+    <label>Project Title</label>
+    <input type="text" name="project_title" placeholder="e.g. Smart Farming App">
+
+    <label>Project Description</label>
+    <textarea name="project_desc" rows="3" placeholder="What problem does it solve? What tech stack did you use?"></textarea>
+    <label>Project Link</label>
+    <input type="text" name="project_link" placeholder="e.g.">
+
+    <div class="section-title">🧠 Skills</div>
+    <label>List your skills (comma separated)</label>
+    <input type="text" name="skills" placeholder="e.g. HTML, CSS, React, Node.js, MongoDB">
+
+    <button type="submit">Generate My Portfolio</button>
+  </form>
+
+</body>
+</html>
