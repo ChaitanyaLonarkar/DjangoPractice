@@ -4,57 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Home</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Welcome | MyProfile App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
 </head>
 <body>
     <header>
-        <h1>Welcome to My Portfolio</h1>
         <nav>
+            <h1 class="logo">MyProfile<span>App</span></h1>
             <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="{% url 'signin' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}" class="signup-btn">Signup</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>This is a brief introduction about myself.</p>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Project 1</h3>
-            <p>Description of project 1.</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Build & Manage Your <span>Professional Profile</span></h2>
+            <p>Create your personalized profile, update details anytime, and showcase your journey beautifully.</p>
+            <div class="hero-buttons">
+                <a href="{% url 'signup' %}" class="btn-primary">Get Started</a>
+                <a href="{% url 'signin' %}" class="btn-secondary">Login</a>
+            </div>
         </div>
-        <div class="project">
-            <h3>Project 2</h3>
-            <p>Description of project 2.</p>
+        <div class="hero-image">
+            <img src="{% static 'images/vg.png' %}" alt="Profile Illustration">
         </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form method="POST" action="">
-            {% csrf_token %}
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <button type="submit">Send</button>
-        </form>
     </section>
 
     <footer>
-        <p>&copy; 2024 My Portfolio</p>
+        <p>© {{ year }} MyProfileApp | Built with ❤️ using Django</p>
     </footer>
 </body>
 </html>

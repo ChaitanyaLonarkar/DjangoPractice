@@ -20,7 +20,15 @@
       <div class="nav-container">
         <h3 href="#" class="logo">Chaitanya's Profile</h3>
         <ul class="nav-links">
-          <li><a class="unique-button" href="#contact">Logout</a></li>
+          <li><a class="unique-button" href="{% url 'logout' %}">Logout</a></li>
+          <li>
+            <a class="unique-button" href="{% url 'update_profile' %}"
+              >Edit Profile</a
+            >
+          </li>
+          <li>
+            <a class="unique-button" href="{% url 'resume' %}">View Resume</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -77,34 +85,41 @@
           </div>
         </div>
         <div class="left">
-          <img src="{% static 'images/about-us.png' %}" alt="">
+          <img src="{% static 'images/about-us.png' %}" alt="" />
         </div>
       </div>
+      <div class="other-info">
+        <div class="card">
+          <div class="section-title">🎓 Education</div>
+          <div class="section-content">
+            <p><b>Degree:</b> {{ user.degree }}</p>
+            <p><b>College / University:</b> {{ user.college }}</p>
+            <p><b>Graduation Year:</b> {{ user.graduation_year }}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-title">💼 Experience</div>
+          <div class="section-content">
+            <p><b>Company / Organization:</b> {{ user.company }}</p>
+            <p><b>Role / Position:</b> {{ user.position }}</p>
+            <p><b>Description:</b> {{ user.responsibilities }}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-title">🚀 Projects</div>
+          <div class="section-content">
+            <p><b>Project Title:</b> {{ user.projects_title }}</p>
+            <p><b>Project Description:</b> {{ user.project_desc }}</p>
+            <p><b>Project Link:</b> {{ user.project_link }}</p>
+          </div>
+        </div>
 
-      <div class="section-title">🚀 Projects</div>
-      <div class="section-content">
-        <p><b>Project Title:</b> {{ user.projects_title }}</p>
-        <p><b>Project Description:</b> {{ user.project_desc }}</p>
-        <p><b>Project Link:</b> {{ user.project_link }}</p>
-      </div>
-
-      <div class="section-title">🧠 Skills</div>
-      <div class="section-content">
-        <p><b>Skills:</b> {{ user.skills }}</p>
-      </div>
-
-      <div class="section-title">🎓 Education</div>
-      <div class="section-content">
-        <p><b>Degree:</b> {{ user.degree }}</p>
-        <p><b>College / University:</b> {{ user.college }}</p>
-        <p><b>Graduation Year:</b> {{ user.graduation_year }}</p>
-      </div>
-
-      <div class="section-title">💼 Experience</div>
-      <div class="section-content">
-        <p><b>Company / Organization:</b> {{ user.company }}</p>
-        <p><b>Role / Position:</b> {{ user.position }}</p>
-        <p><b>Description:</b> {{ user.responsibilities }}</p>
+        <div class="card">
+          <div class="section-title">🧠 Skills</div>
+          <div class="section-content">
+            <p><b>Skills:</b> {{ user.skills }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </body>

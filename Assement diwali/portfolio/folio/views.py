@@ -51,6 +51,7 @@ def signin(request):
     return render(request,"signin.html")
 
 def logout(request):
+
     auth.logout(request)
     return redirect('home')
 
@@ -58,11 +59,11 @@ def logout(request):
 def create_profile(request):
     user = request.user
  
-    if user is None:
-        return redirect('signin')
+    # if user is None:
+    #     return redirect('signin')
     
-    if Portfolio.objects.filter(user=user).exists():
-        return redirect('profile')
+    # if Portfolio.objects.filter(user=user).exists():
+    #     return redirect('profile')
 
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -180,3 +181,7 @@ def update_profile(request):
         return redirect('profile')
     return render(request, 'profile_form.html', {'user': portfolio})
 
+
+def resume(request):
+    portfolio = Portfolio.objects.get(user=request.user)
+    return render(request, 'resume.html', {'user': portfolio})
