@@ -1,0 +1,86 @@
+/* style.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f8fa; /* soft gray background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signin-container,
+.signup-container {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    width: 380px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #333;
+    font-size: 26px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #444;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: -webkit-fill-available;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff; /* soft blue accent */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #40424A; /* soft blue tone */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2b2c30;
+}
+
+@media (max-width: 480px) {
+    .signin-container {
+        width: 90%;
+        padding: 30px 20px;
+    }
+}
