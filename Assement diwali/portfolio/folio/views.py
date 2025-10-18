@@ -118,14 +118,65 @@ def create_profile(request):
 def profile(request):
     # portfolio = Portfolio.objects.filter(user=request.user)
     #  this is working fine to get the data
-    portfolio =Portfolio.objects.all().first()
+    # portfolio =Portfolio.objects.all().first()
 
     # portfolio = Portfolio(user=request.user)
     # for obj in portfolio:
     #     print(obj)
 
+    portfolio = Portfolio.objects.get(user=request.user)
+
     # print(portfolio.user.name,'===================')
     # print(portfolio,'+++++++++++++++')
 
     return render(request, 'profile.html', {'user': portfolio})
+
+
+def update_profile(request):
+    portfolio = Portfolio.objects.get(user=request.user)
+    # print(portfolio,'+++++++++++++++')
+    if request.method == 'POST':
+        if request.FILES.get('profile'):
+            portfolio.profile = request.FILES.get('profile')
+        if request.POST.get('name'):
+            portfolio.name = request.POST.get('name')
+        if request.POST.get('email'):
+            portfolio.email = request.POST.get('email')
+        if request.POST.get('phone'):
+            portfolio.phone = request.POST.get('phone')
+        if request.POST.get('resume'):
+            portfolio.resume = request.POST.get('resume')
+        if request.POST.get('location'):
+            portfolio.location = request.POST.get('location')
+        if request.POST.get('linkedin'):
+            portfolio.linkedin = request.POST.get('linkedin')
+        if request.POST.get('github'):
+            portfolio.github = request.POST.get('github')    
+        if request.POST.get('bio'):
+            portfolio.bio = request.POST.get('bio')
+        if request.POST.get('age'):
+            portfolio.age = request.POST.get('age')
+        if request.POST.get('degree'):
+            portfolio.degree = request.POST.get('degree')
+        if request.POST.get('college'):
+            portfolio.college = request.POST.get('college')
+        if request.POST.get('grad_year'):
+            portfolio.graduation_year = request.POST.get('grad_year')
+        if request.POST.get('company'):
+            portfolio.company = request.POST.get('company')
+        if request.POST.get('role'):
+            portfolio.position = request.POST.get('role')
+        if request.POST.get('experience_desc'):
+            portfolio.responsibilities = request.POST.get('experience_desc')
+        if request.POST.get('project_title'):
+            portfolio.projects_title = request.POST.get('project_title')
+        if request.POST.get('project_desc'):
+            portfolio.project_desc = request.POST.get('project_desc')
+        if request.POST.get('skills'):
+            portfolio.skills = request.POST.get('skills')
+        if request.POST.get('project_link'):
+            portfolio.project_link = request.POST.get('project_link')
+        portfolio.save()
+        return redirect('profile')
+    return render(request, 'profile_form.html', {'user': portfolio})
 
