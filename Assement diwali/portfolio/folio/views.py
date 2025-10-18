@@ -4,7 +4,6 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-
 from .models import Portfolio
 
 # Create your views here.
@@ -44,7 +43,7 @@ def signin(request):
         user = authenticate(request,username=username,password=password)
         if user is not None:
             auth.login(request,user)
-            return redirect("home")
+            return redirect("profile")
         else:
             messages.info(request,'Username or Password is incorrect')
             return redirect("signin")
@@ -117,12 +116,16 @@ def create_profile(request):
 
 # @login_required
 def profile(request):
-    portfolio = Portfolio.objects.all()
-    print(portfolio,'===================')
-    
-    
+    # portfolio = Portfolio.objects.filter(user=request.user)
+    #  this is working fine to get the data
+    portfolio =Portfolio.objects.all().first()
 
-    # print(name,'+++++++++++++++')
+    # portfolio = Portfolio(user=request.user)
+    # for obj in portfolio:
+    #     print(obj)
 
+    # print(portfolio.user.name,'===================')
+    # print(portfolio,'+++++++++++++++')
 
     return render(request, 'profile.html', {'user': portfolio})
+
