@@ -91,66 +91,71 @@
 
     <div class="section-title">👤 Personal Information</div>
     <label>Full Name</label>
-    <input type="text" name="name" placeholder="e.g. Chaitanya Lonarkar" required>
+    <input type="text" name="name" value='{% if user.name  %}{{ user.name }}{% endif %}' placeholder="e.g. Chaitanya Lonarkar" required>
 
     <label>Email</label>
-    <input type="email" name="email" placeholder="e.g. you@example.com" required>
+    <input type="email" value='{% if user.email  %}{{ user.email }}{% endif %}' name="email"  placeholder="e.g. you@example.com" required>
 
     <label>Phone</label>
-    <input type="text" name="phone" placeholder="e.g. +91 9876543210" >
+    <input type="text" value='{% if user.phone  %}{{ user.phone }}{% endif %}' name="phone" placeholder="e.g. +91 9876543210" >
    
     <label>Profile Picture</label>
-    <input type="file" name="profile" id="">
+    <input type="file" value='{% if user.  %}{{ user. }}{% endif %}' name="profile" id="">
 
     <lable>Location</label>
-    <input type="text" name="location" placeholder="e.g. City, Country">
+    <input type="text" value='{% if user.location  %}{{ user.location }}{% endif %}' name="location" placeholder="e.g. City, Country">
 
     <label>Resume Link</label>
-    <input type="text" name="resume" placeholder="e.g. https://yourwebsite.com">
+    <input type="text" value='{% if user.resume  %}{{ user.resume }}{% endif %}' name="resume" placeholder="e.g. https://yourwebsite.com">
 
     <label>LinkedIn Profile</label>
-    <input type="text" name="linkedin" placeholder="e.g. https://linkedin.com/in/yourname">
+    <input type="text" value='{% if user.linkedin  %}{{ user.linkedin }}{% endif %}' name="linkedin" placeholder="e.g. https://linkedin.com/in/yourname">
 
     <label>GitHub Profile</label>
-    <input type="text" name="github" placeholder="e.g. https://github.com/yourname">
+    <input type="text" value='{% if user.github  %}{{ user.github }}{% endif %}' name="github" placeholder="e.g. https://github.com/yourname">
 
     <label>About You / Summary</label>
-    <textarea name="bio" rows="4" placeholder="Write a short professional summary..."></textarea>
+    <textarea  name="bio" rows="4" placeholder="Write a short professional summary...">{% if user.bio  %}{{ user.bio }}{% endif %}</textarea>
 
     <div class="section-title">🎓 Education</div>
     <label>Degree</label>
-    <input type="text" name="degree" placeholder="e.g. B.Tech in Computer Science">
+    <input type="text" value='{% if user.degree  %}{{ user.degree }}{% endif %}' name="degree" placeholder="e.g. B.Tech in Computer Science">
 
     <label>College / University</label>
-    <input type="text" name="college" placeholder="e.g. Government Engineering College">
+    <input type="text" value='{% if user.college  %}{{ user.college }}{% endif %}' name="college" placeholder="e.g. Government Engineering College">
 
     <label>Graduation Year</label>
-    <input type="text" name="grad_year" placeholder="e.g. 2025">
+    <input type="text" value='{% if user.graduation_year  %}{{ user.graduation_year }}{% endif %}' name="grad_year" placeholder="e.g. 2025">
 
     <div class="section-title">💼 Experience</div>
     <label>Company / Organization</label>
-    <input type="text" name="company" placeholder="e.g. Google Developer Student Club">
+    <input type="text" value='{% if user.company  %}{{ user.company }}{% endif %}' name="company" placeholder="e.g. Google Developer Student Club">
 
     <label>Role / Position</label>
-    <input type="text" name="role" placeholder="e.g. Web Developer Coordinator">
+    <input type="text" value='{% if user.position  %}{{ user.position }}{% endif %}' name="role" placeholder="e.g. Web Developer Coordinator">
 
     <label>Description</label>
-    <textarea name="experience_desc" rows="3" placeholder="Briefly describe your responsibilities and achievements..."></textarea>
+    <textarea  name="experience_desc" rows="3" placeholder="Briefly describe your responsibilities and achievements...">{% if user.responsibilities  %}{{ user.responsibilities }}{% endif %}</textarea>
 
     <div class="section-title">🚀 Projects</div>
     <label>Project Title</label>
-    <input type="text" name="project_title" placeholder="e.g. Smart Farming App">
+    <input type="text" value='{% if user.projects_title  %}{{ user.projects_title }}{% endif %}' name="project_title" placeholder="e.g. Smart Farming App">
 
     <label>Project Description</label>
-    <textarea name="project_desc" rows="3" placeholder="What problem does it solve? What tech stack did you use?"></textarea>
+    <textarea  name="project_desc" rows="3" placeholder="What problem does it solve? What tech stack did you use?">{% if user.project_desc  %}{{ user.project_desc }}{% endif %}</textarea>
     <label>Project Link</label>
-    <input type="text" name="project_link" placeholder="e.g.">
+    <input type="text" value='{% if user.project_link  %}{{ user.project_link }}{% endif %}' name="project_link" placeholder="e.g.">
 
     <div class="section-title">🧠 Skills</div>
     <label>List your skills (comma separated)</label>
-    <input type="text" name="skills" placeholder="e.g. HTML, CSS, React, Node.js, MongoDB">
+    <input type="text" value='{% if user.skills  %}{{ user.skills }}{% endif %}' name="skills" placeholder="e.g. HTML, CSS, React, Node.js, MongoDB">
 
-    <button type="submit">Generate My Portfolio</button>
+    {% if request.user.is_authenticated %}
+    <button type="submit">Edit Profile</button>
+{% else %}  <button type="submit">Generate My Profile</button>
+    {% endif %}
+
+    
   </form>
 
 </body>
