@@ -1,183 +1,111 @@
-
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ profile.name }}'s Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background: linear-gradient( #F8FAFC);
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      max-width: 950px;
-      margin: 60px auto;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 40px;
-    }
-
-    .profile-header {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      margin-bottom: 30px;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 20px;
-    }
-
-    .profile-header img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #1E3A8A;
-    }
-
-    .profile-header h2 {
-      margin: 0;
-      color: #1E3A8A;
-      font-weight: 600;
-    }
-
-    .profile-header p {
-      color: #555;
-      margin: 4px 0;
-    }
-
-    .section-title {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #1E3A8A;
-      margin-top: 30px;
-      border-left: 4px solid #1E3A8A;
-      padding-left: 10px;
-    }
-
-    .info-block {
-      margin-top: 10px;
-      background: #f9f9f9;
-      padding: 15px 20px;
-      border-radius: 10px;
-    }
-
-    .info-block p {
-      margin: 5px 0;
-    }
-
-    .skills span {
-      background: #1E3A8A;
-      color: #fff;
-      border-radius: 20px;
-      padding: 6px 12px;
-      margin: 5px;
-      display: inline-block;
-      font-size: 0.9rem;
-    }
-
-    .btn-edit {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background-color: #1E3A8A;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 10px;
-      margin-top: 30px;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .btn-edit:hover {
-      background-color: #176882;
-      color: #fff;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- Profile Header -->
-    <div class="profile-header">
-      {% if user.profile %}
-        <img src="{{ user.profile.url }}" alt="Profile Picture">
-      {% else %}
-        <img src="{% static 'default-profile.png' %}" alt="Default Profile">
-      {% endif %}
-      <div>
-        <h2>{{ user.name }}</h2>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Phone:</strong> {{ user.phone }}</p>
-        <p><strong>Location:</strong> {{ user.location }}</p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ profile.name }}'s Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+    <!-- {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %} -->
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <h3 href="#" class="logo">Chaitanya's Profile</h3>
+        <ul class="nav-links">
+          <li><a class="unique-button" href="#contact">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="profile-header">
+        <div class="right">
+          <h2>{{ user.name }}</h2>
+          <p>
+            <b>
+              👨‍💻{{ user.position }} |📥 {{ user.email }} |🤙 {{ user.phone }}
+            </b>
+          </p>
+          <p class="bio">{{ user.bio }}</p>
+          <div class="btns">
+            <a class="unique-button"> download CV </a>
+            <a class="unique-button"> Connect with me </a>
+          </div>
+        </div>
+        <div class="left">
+          <!-- <img
+            src="{{ user.profile.url }}"
+            alt="{{ profile.name }}'s Profile Picture"
+          /> -->
+          <img
+            src="{% static 'images/home-right.png' %}"
+            alt="Profile Picture"
+          />
+        </div>
       </div>
     </div>
 
-    <!-- About -->
-    <div class="section-title">👤 About</div>
-    <div class="info-block">
-      <p>{{ user.bio }}</p>
+    <div class="info">
+      <!-- <div class="img">
+        <img
+          src="{% static 'images/resume-bg.jpg' %}"
+          alt="Background Image"
+        />
+      </div> -->
+      <div class="section-content personal">
+        <div class="right">
+          <div class="section-title">👤 Personal Information</div>
+          <p><b>Full Name</b> {{ user.name }}</p>
+          <p><b>Email</b> {{ user.email }}</p>
+          <p><b>Phone</b> {{ user.phone }}</p>
+          <!-- <p><b>Resume Link:</b> {{ user.resume }}</p>
+        <p><b>LinkedIn Profile:</b> {{ user.linkedin }}</p>
+        <p><b>GitHub Profile:</b> {{ user.github }}</p> -->
+
+          <div>
+            <h3>Connect with me:</h3>
+            <a class="unique-button social" href="">LinkedIn</a>
+            <a class="unique-button social" href="">GitHub</a>
+            <a class="unique-button social" href="">Resume</a>
+          </div>
+        </div>
+        <div class="left">
+          <img src="{% static 'images/about-us.png' %}" alt="">
+        </div>
+      </div>
+
+      <div class="section-title">🚀 Projects</div>
+      <div class="section-content">
+        <p><b>Project Title:</b> {{ user.projects_title }}</p>
+        <p><b>Project Description:</b> {{ user.project_desc }}</p>
+        <p><b>Project Link:</b> {{ user.project_link }}</p>
+      </div>
+
+      <div class="section-title">🧠 Skills</div>
+      <div class="section-content">
+        <p><b>Skills:</b> {{ user.skills }}</p>
+      </div>
+
+      <div class="section-title">🎓 Education</div>
+      <div class="section-content">
+        <p><b>Degree:</b> {{ user.degree }}</p>
+        <p><b>College / University:</b> {{ user.college }}</p>
+        <p><b>Graduation Year:</b> {{ user.graduation_year }}</p>
+      </div>
+
+      <div class="section-title">💼 Experience</div>
+      <div class="section-content">
+        <p><b>Company / Organization:</b> {{ user.company }}</p>
+        <p><b>Role / Position:</b> {{ user.position }}</p>
+        <p><b>Description:</b> {{ user.responsibilities }}</p>
+      </div>
     </div>
-
-    <!-- Education -->
-    <div class="section-title">🎓 Education</div>
-    <div class="info-block">
-      <p><strong>Degree:</strong> {{ user.degree }}</p>
-      <p><strong>College:</strong> {{ user.college }}</p>
-      <p><strong>Graduation Year:</strong> {{ user.grad_year }}</p>
-    </div>
-
-    <!-- Experience -->
-    <div class="section-title">💼 Experience</div>
-    <div class="info-block">
-      <p><strong>Company:</strong> {{ user.company }}</p>
-      <p><strong>Role:</strong> {{ user.role }}</p>
-      <p>{{ user.experience_desc }}</p>
-    </div>
-
-    <!-- Projects -->
-    <div class="section-title">🚀 Projects</div>
-    <div class="info-block">
-      <p><strong>Title:</strong> {{ user.project_title }}</p>
-      <p>{{ user.project_desc }}</p>
-      {% if user.project_link %}
-        <p><a href="{{ user.project_link }}" target="_blank">🔗 View Project</a></p>
-      {% endif %}
-    </div>
-
-    <!-- Skills -->
-    <div class="section-title">🧠 Skills</div>
-    {% comment %} <div class="info-block skills">
-      {% for skill in user.skills|split:"," %}
-        <span>{{ skill|trim }}</span>
-      {% empty %}
-        <p>No skills listed.</p>
-      {% endfor %}
-    </div> {% endcomment %}
-
-    <!-- Social Links -->
-    <div class="section-title">🌐 Links</div>
-    <div class="info-block">
-      {% if user.linkedin %}
-        <p><a href="{{ user.linkedin }}" target="_blank">LinkedIn Profile</a></p>
-      {% endif %}
-      {% if user.github %}
-        <p><a href="{{ user.github }}" target="_blank">GitHub Profile</a></p>
-      {% endif %}
-      {% if user.resume %}
-        <p><a href="{{ user.resume }}" target="_blank">Resume</a></p>
-      {% endif %}
-    </div>
-
-    <!-- Edit Button -->
-    <a href="{% url 'update_profile' %}" class="btn-edit">✏️ Edit Profile</a>
-  </div>
-</body>
+  </body>
 </html>
