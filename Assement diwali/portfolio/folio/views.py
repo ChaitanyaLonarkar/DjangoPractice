@@ -12,6 +12,8 @@ def home(request):
     return render(request, 'home.html')
 
 def signup(request):
+    if request.user.is_authenticated:
+        return redirect("profile")
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -36,7 +38,10 @@ def signup(request):
             
     return render(request,"signup.html")
 
+@login_required
 def signin(request):
+    if request.user.is_authenticated:
+        return redirect("profile")
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -50,12 +55,13 @@ def signin(request):
             
     return render(request,"signin.html")
 
+@login_required
 def logout(request):
-
+    
     auth.logout(request)
     return redirect('home')
 
-
+@login_required
 def create_profile(request):
     user = request.user
  
@@ -115,7 +121,7 @@ def create_profile(request):
 
     return render(request, 'profile_form.html')
 
-# @login_required
+@login_required
 def profile(request):
     # portfolio = Portfolio.objects.filter(user=request.user)
     #  this is working fine to get the data
@@ -133,6 +139,7 @@ def profile(request):
     return render(request, 'profile.html', {'user': portfolio})
 
 
+@login_required
 def update_profile(request):
     portfolio = Portfolio.objects.get(user=request.user)
     # print(portfolio,'+++++++++++++++')
@@ -181,6 +188,8 @@ def update_profile(request):
         return redirect('profile')
     return render(request, 'profile_form.html', {'user': portfolio})
 
+
+@login_required
 
 def resume(request):
     portfolio = Portfolio.objects.get(user=request.user)
